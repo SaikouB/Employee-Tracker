@@ -9,21 +9,21 @@ VALUES  (1, 'Pathology'),
 -- Roles --
 
 INSERT INTO role (id, title, salary, department_id)
-VALUES (1, 'Medical laboratory scientist', 70000, 1),
-       (2, 'Medical laboratory technician', 55000, 1),
-       (3, 'Specimen processer', 40000, 1),
-       (4, 'Phlebotomist', 48000, 1),
-       (5, 'Radiologist', 250000, 2),
-       (6, 'Radiology technician', 70000, 2),
-       (7, 'Radiation therapist', 85000, 2),
-       (8, 'Ultrasound technnician', 88000, 3),
-       (9, 'Ultrasound technologist', 120000, 3),
-       (10, 'Vice President sonographer', 150000, 3),
-       (11, 'Pediatric sonographer', 125000, 3),
-       (12, 'Cardiologist', 275000, 4),
-       (13, 'Respiratory therapist', 65000, 4),
-       (14, 'Cardiology consultant', 112000, 4),
-       (15, 'Cardiovascular technician', 62000, 4);
+VALUES (1, 'Medical laboratory scientist', 70000.00, 1),
+       (2, 'Medical laboratory technician', 55000.00, 1),
+       (3, 'Specimen processer', 40000.00, 1),
+       (4, 'Phlebotomist', 48000.00, 1),
+       (5, 'Radiologist', 250000.00, 2),
+       (6, 'Radiology technician', 70000.00, 2),
+       (7, 'Radiation therapist', 85000.00, 2),
+       (8, 'Ultrasound technnician', 88000.00, 3),
+       (9, 'Ultrasound technologist', 120000.00, 3),
+       (10, 'Vice President sonographer', 150000.00, 3),
+       (11, 'Pediatric sonographer', 125000.00, 3),
+       (12, 'Cardiologist', 275000.00, 4),
+       (13, 'Respiratory therapist', 65000.00, 4),
+       (14, 'Cardiology consultant', 112000.00, 4),
+       (15, 'Cardiovascular technician', 62000.00, 4);
 
 -- Employees --
 
