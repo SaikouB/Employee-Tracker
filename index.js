@@ -151,14 +151,50 @@ function employee() {
 
 function addDepartment() {
     inquirer.prompt([{
-            type: 'input',
-            name: 'department_name',
-            message: 'Enter department name'
-        }])
-        .then((error, input) => {
-            let query = 'INSERT INTO department id, department_name = ?' 
+        type: 'input',
+        name: 'departmentName',
+        message: 'Enter the new department name'
+    }])
+        .then((input) => {
+            const newDepartment = input.departmentName;
+            let query = `INSERT INTO department (department_name) VALUES  (?)`;
+            employeeDb.query(query, [newDepartment], (error, results) => {
+                if (error) throw error;
+
+                console.log(`${newDepartment} Successfully added!`);
+            });
+        });
+};
+
+function addRole () {
+    inquirer.prompt([{
+        type: 'input',
+        name: 'roleName',
+        message: 'What is the name of the Role you want to add?'
+    }, {
+        type: 'input',
+        name: 'roleSalary',
+        message: 'What is the salary of the role?'
+    }, {
+        type: 'input',
+        name: 'roleDepartment',
+        message: 'What department does the role belong to?'
+    }
+]) .then((role, salary, department) => {
+        const newRole = role.roleName;
+        const newSalary = salary.roleSalary;
+        const newDepartment  = department.roleDepartment;
+        
+
+        let query = `INSERT INTO role (id) VALUES (?)`;
+        employeeDb.query(query, [newRole], [newSalary], [newDepartment], (error) => {
+            if (error) throw error;
+
+            console.log(`${newRole} Successfully added!`);
+            mainMenu();
         })
-}
+    });
+};
 
 
 
