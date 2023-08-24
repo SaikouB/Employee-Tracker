@@ -30,7 +30,7 @@ const primaryPrompt = () => [{
         'Add a role',
         'Add an employee',
         'Update an employee role',
-        'Remove department',
+        'Remove a department',
         'Exit'],
 }]
 // Main menu function to prompt inquirer and handle case and switch depending on user choice
@@ -58,7 +58,7 @@ function mainMenu() {
             case 'Update an employee role':
                 updateRole();
                 break;
-            case 'Remove department':
+            case 'Remove a department':
                 removeDept();
                 break;
             case 'Exit':
@@ -340,7 +340,7 @@ async function updateRole() {
         employeeDb.query(query, [theSelectedRole, theSelectedEmployee], (error) => {
             if (error) throw error;
 
-            console.log(`Successfully updated role for ${theSelectedEmployee} to ${theSelectedRole}`);
+            console.log(`Successfully updated employee's role`);
             mainMenu();
         })
     })
