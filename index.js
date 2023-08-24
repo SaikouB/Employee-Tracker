@@ -30,6 +30,7 @@ const primaryPrompt = () => [{
         'Add a role',
         'Add an employee',
         'Update an employee role',
+        'Remove department',
         'Exit'],
 }]
 // Main menu function to prompt inquirer and handle case and switch depending on user choice
@@ -56,6 +57,9 @@ function mainMenu() {
                 break;
             case 'Update an employee role':
                 updateRole();
+                break;
+            case 'Remove department':
+                removeDept();
                 break;
             case 'Exit':
                 console.log('Goodbye 🙂')
@@ -166,7 +170,7 @@ function addDepartment() {
             employeeDb.query(query, [newDepartment], (error, results) => {
                 if (error) throw error;
 
-                console.log(`${newDepartment} Successfully added!`);
+                console.log(`Successfully added ${newDepartment} to database!`);
                 mainMenu();
             });
         });
@@ -332,7 +336,7 @@ async function updateRole() {
         const theSelectedEmployee = inputs.selectedEmployee
         const theSelectedRole = inputs.selectedRole
 
-        let query = `UPDATE employee SET (first_name, last_name) = ? WHERE role_id = ?`;
+        let query = `UPDATE employee SET role_id = ? WHERE id = ?`;
         employeeDb.query(query, [theSelectedRole, theSelectedEmployee], (error) => {
             if (error) throw error;
 
@@ -341,3 +345,34 @@ async function updateRole() {
         })
     })
 };
+
+async function removeDept() {
+    let query = `SELECT 
+    department.id AS Id,
+    department.department_name AS Department
+    FROM department`;
+    let results = await employeeDb.promise().query(query)
+    let deptChoices = results[0]
+
+    for (i = 0; i < deptChoices.length; i++) {
+        deptChoices[i] = {
+            name: deptChoices[i].Department,
+            value: deptChoices[i].Id
+        };
+    }   
+    inquirer.prompt([{
+        type: 'list',
+        name: 'removeDept',
+        message: 'Choose the Department you would like to remove:',
+        choices: deptChoices
+    }]).then((choice) => {
+        let departmentId =  choice.removeDept 
+        let departmentName = deptChoices.find(department => department.value === departmentId).name;
+        
+        let queryRemoveDept = `DELETE FROM department WHERE id = ?`;
+        employeeDb.promise().query(queryRemoveDept, [departmentId]);
+    
+        console.log(`Successfully removed ${departmentName} from database`);
+        mainMenu();
+    })
+}
