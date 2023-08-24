@@ -6,6 +6,7 @@
 ## Table of Contents
   
   - [Description](#description)
+  - [Demonstration](#demonstration-video-link)
   - [Installation](#installation)
   - [Technologies](#technologies)
   - [Usage](#usage)
@@ -17,6 +18,12 @@
 ## Description
 
  Employee tracker is a commmand-line application database that allows the user to track their employee's. After logging in, the user is presented with a main menu list where they can use the up and down arrow keys and choose between several options. The user can choose to view all departments, view all roles, or view all employees. Also on the list, are other several cases to include: add a department, add a role, add an employee, update a role, and remove a department. Finally, there is an exit option that simply lets the user exit the application.
+
+ <iframe src="https://drive.google.com/file/d/1IZeQcYaldSIMixBKX7ZXX_PrK3Q9ZJE4/preview" width="640" height="480"></iframe>
+
+ ## Demonstration Video Link
+
+ https://drive.google.com/file/d/1IZeQcYaldSIMixBKX7ZXX_PrK3Q9ZJE4/view
 
 ## Installation
 
